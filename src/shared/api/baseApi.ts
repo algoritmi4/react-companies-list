@@ -6,14 +6,23 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://certain-hushed-fog.glitch.me' }),
   endpoints: (builder) => ({
     getCompanies: builder.query<ICompany[], number>({
-      query: (limit) => ({
+      query: (start) => ({
         url: '/companies',
         method: 'GET',
         params: {
-          _start: 0,
-          _limit: limit
+          _start: start,
+          _limit: 15
         }
       }),
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName
+      },
+      merge: (currentCache, newItems) => {
+        currentCache.push(...newItems)
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg !== previousArg
+      }
     }),
   }),
 })

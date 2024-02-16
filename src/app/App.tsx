@@ -1,15 +1,15 @@
 import { useGetCompaniesQuery } from "@/shared/api/baseApi";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
-import { setPaginationLimit } from "@/features/CompaniesTable/model/scrollSlice";
+import { setPaginationStart } from "@/features/CompaniesTable/model/scrollSlice";
 import { CompaniesTable } from "@/features/CompaniesTable";
 
 export function App() {
-  const { limit } = useAppSelector((state) => state.scroll);
-  const { data: companies = [], isLoading, isError } = useGetCompaniesQuery(limit);
+  const { start } = useAppSelector((state) => state.scroll);
+  const { data: companies = [], isLoading, isError } = useGetCompaniesQuery(start);
   const dispatch = useAppDispatch();
 
   function handleFetchNextPage() {
-    dispatch(setPaginationLimit());
+    dispatch(setPaginationStart());
   }
 
   return (
