@@ -14,7 +14,7 @@ export function CompaniesTableBox(): ReactElement {
   }
 
   return (
-    <div className="w-3/5 p-3 border-solid border-black border-2">
+    <div className="w-3/5 border-solid border-black border-2">
       {
         isError ? (
           <></>

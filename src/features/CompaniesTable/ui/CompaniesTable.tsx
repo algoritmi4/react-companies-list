@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { TableHeader } from "@/entities/TableHeader";
 import { Preloader } from "@/shared/ui/Preloader";
 import { ICompany } from "@/shared/model/types";
-import { TableRow } from "@/entities/TableRow";
+import { CompaniesTableRow } from "@/entities/CompaniesTableRow";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 interface ICompaniesTable {
@@ -12,7 +12,7 @@ interface ICompaniesTable {
 }
 
 export function CompaniesTable({ companies, handleNext, isLoading }: ICompaniesTable): ReactElement {
-  const rows = companies.map((company, index) => <TableRow data={company} key={index} />);
+  const rows = companies.map((company, index) => <CompaniesTableRow data={company} key={index} />);
 
   return (
     <>
