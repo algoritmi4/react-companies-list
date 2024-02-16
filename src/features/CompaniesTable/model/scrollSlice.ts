@@ -8,12 +8,12 @@ const scrollSlice = createSlice({
   name: 'scroll',
   initialState,
   reducers: {
-    setPaginationStart: (state) => ({
+    setPaginationLimit: (state) => ({
       limit: state.limit + 15
     })
   }
 })
 
-export const { setPaginationStart } = scrollSlice.actions;
+export const { setPaginationLimit } = scrollSlice.actions;
 
 export default scrollSlice.reducer;

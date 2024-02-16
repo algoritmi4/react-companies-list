@@ -15,7 +15,7 @@ export function CompaniesTable({ companies, handleNext, isLoading }: ICompaniesT
   const rows = companies.map((company, index) => <CompaniesTableRow data={company} key={index} />);
 
   return (
-    <>
+    <div className="w-3/5 border-solid border-black border-2">
       {
         isLoading ? (
           <Preloader />
@@ -34,6 +34,6 @@ export function CompaniesTable({ companies, handleNext, isLoading }: ICompaniesT
           </InfiniteScroll>
         )
       }
-    </>
+    </div>
   )
 }
