@@ -1,5 +1,5 @@
-interface IEmployees {
-  id: string;
+export interface IEmployees {
+  id: number;
   name: string;
   last_name: string;
   position: string;
@@ -8,6 +8,6 @@ interface IEmployees {
 export interface ICompany {
   company: string;
   address: string;
-  id: string;
+  id: number;
   employees: IEmployees[];
 }

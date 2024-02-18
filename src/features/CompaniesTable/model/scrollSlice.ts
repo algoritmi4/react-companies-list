@@ -1,19 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  start: 0
+  page: 1
 }
 
 const scrollSlice = createSlice({
   name: 'scroll',
   initialState,
   reducers: {
-    setPaginationStart: (state) => ({
-      start: state.start + 15
+    setPaginationPage: (state) => ({
+      page: state.page + 1
+    }),
+    resetPaginationPage: () => ({
+      page: 1
     })
   }
 })
 
-export const { setPaginationStart } = scrollSlice.actions;
+export const { setPaginationPage, resetPaginationPage } = scrollSlice.actions;
 
 export default scrollSlice.reducer;
