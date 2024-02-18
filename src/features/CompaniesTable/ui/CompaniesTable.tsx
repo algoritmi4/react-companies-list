@@ -60,7 +60,8 @@ export function CompaniesTable({ companies, handleNext, isLoading }: ICompaniesT
         ) : (
           <InfiniteScroll
             dataLength={companies.length}
-            hasMore={companies.length < 31}
+            // json-server do not support pagination great, i cant take a limit of data from response
+            hasMore={companies.length < 100}
             next={handleNext}
             loader={<div className="self-center w-12"><Preloader /></div>}
             height={870}
