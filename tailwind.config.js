@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'cross': "url('src/images/close-cross.svg')",
-        'edit-icon': "url('src/images/edit-icon.png')"
+        'cross': "url('images/close-cross.svg')",
+        'edit-icon': "url('images/edit-icon.png')"
       },
       borderWidth: {
         '1': '1px'
