@@ -4,9 +4,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'cross': "url('images/close-cross.svg')",
-        'hatch': 'repeating-linear-gradient(-60deg, #555 0, #555 1px, transparent 1px, transparent 5px)',
-        'edit-icon': "url('images/edit-icon.png')"
+        'cross': "url('src/images/close-cross.svg')",
+        'edit-icon': "url('src/images/edit-icon.png')"
       },
       borderWidth: {
         '1': '1px'
