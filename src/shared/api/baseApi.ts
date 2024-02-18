@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ICompany } from '../model/types';
 
-const baseUrl = import.meta.env.VITE_PROD ? 'https://certain-hushed-fog.glitch.me': 'http://localhost:3000';
+const baseUrl = import.meta.env.VITE_NODE_ENV === 'production' ? 'https://certain-hushed-fog.glitch.me': 'http://localhost:3000';
 
 export const baseApi = createApi({
   reducerPath: 'companiesApi',
