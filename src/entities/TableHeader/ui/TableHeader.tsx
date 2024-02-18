@@ -23,7 +23,7 @@ export function TableHeader({ companies, employees, isAllChecked, secondColumnTe
   }
 
   return (
-    <div className="w-full border-solid border-black border-2 flex">
+    <div className="w-full border-solid border-1 flex mt-2">
       <div className="w-1/4 px-1 py-2 flex items-center justify-center">
         <label className="cursor-pointer" htmlFor="check">Выбрать все</label>
         <input onChange={checkAll} className="w-5 h-5 ml-2 cursor-pointer" type="checkbox" id="check" checked={isAllChecked}/>

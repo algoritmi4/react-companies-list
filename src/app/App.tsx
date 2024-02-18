@@ -18,7 +18,7 @@ export function App() {
     <main className="w-screen h-screen flex">
       {
         isError ? (
-          <></>
+          <h1>На сервере произошла ошибка. Перезагрузите страницу или попробуйте позже</h1>
         ) : (
           <CompaniesTable companies={companies} handleNext={handleFetchNextPage} isLoading={isLoading} />
         )

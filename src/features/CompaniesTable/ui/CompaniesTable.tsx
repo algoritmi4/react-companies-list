@@ -42,17 +42,19 @@ export function CompaniesTable({ companies, handleNext, isLoading }: ICompaniesT
   }
 
   return (
-    <div className="w-3/5 border-solid border-black border-2 flex flex-col">
+    <div className="w-3/5 flex flex-col p-2">
       {
         isOpen && <AddCompanyPopup />
       }
-      <div className="flex">
-        <button onClick={handleOpenModal} type="button" className="px-3 py-2 bg-green-500 rounded-[10px]">Добавить</button>
-        <button onClick={handleDeleteCompanies} type="button" className={`px-3 py-2 bg-red-500 rounded-[10px] ${checkedCompanies.length === 0 ? "bg-transparent" : ""}`} disabled={checkedCompanies.length === 0}>Удалить</button>
+      <div className="flex self-end mr-4">
+        <button onClick={handleOpenModal} type="button" className="px-3 py-1 bg-green-500 rounded-[10px] border-black border-2 border-solid">Добавить</button>
+        <button onClick={handleDeleteCompanies} type="button" className={`px-3 py-1 rounded-[10px] ml-2 ${checkedCompanies.length === 0 ? "bg-gray-500" : "bg-red-500"}`} disabled={checkedCompanies.length === 0}>Удалить</button>
       </div>
       {
         isLoading ? (
-          <Preloader />
+          <div className="flex items-center justify-center h-screen">
+            <Preloader />
+          </div>
         ) : companies.length === 0 ? (
           <></>
         ) : (
@@ -60,8 +62,9 @@ export function CompaniesTable({ companies, handleNext, isLoading }: ICompaniesT
             dataLength={companies.length}
             hasMore={companies.length < 31}
             next={handleNext}
-            loader={<Preloader />}
-            height={800}
+            loader={<div className="self-center w-12"><Preloader /></div>}
+            height={870}
+            className="flex flex-col"
           >
             <TableHeader companies={companies} isAllChecked={isAllChecked} secondColumnText="Название компании" thirdColumnText="Кол-во сотрудников" fourthColumnText="Адрес" />
             {rows}

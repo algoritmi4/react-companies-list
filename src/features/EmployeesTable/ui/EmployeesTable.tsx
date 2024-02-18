@@ -49,20 +49,20 @@ export function EmployeesTable({ company }: IEmployeesTable): ReactElement {
   }
 
   return (
-    <div className="w-2/5 border-solid border-black border-2">
+    <div className="w-2/5 border-solid border-1 flex flex-col p-3">
       {
         isOpen && <AddEmployeePopup company={company} />
       }
-      <div className="flex">
-        <button onClick={handleOpenModal} type="button" className="px-3 py-2 bg-green-500 rounded-[10px]">Добавить</button>
-        <button onClick={handleDeleteEmployees} type="button" className={`px-3 py-2 bg-red-500 rounded-[10px] ${checkedEmployees.length === 0 ? "bg-transparent" : ""}`} disabled={checkedEmployees.length === 0}>Удалить</button>
+      <div className="flex self-end mr-4">
+        <button onClick={handleOpenModal} type="button" className="px-3 py-1 bg-green-500 rounded-[10px] border-black border-2 border-solid">Добавить</button>
+        <button onClick={handleDeleteEmployees} type="button" className={`px-3 py-1 rounded-[10px] ml-2 ${checkedEmployees.length === 0 ? "bg-gray-500" : "bg-red-500"}`} disabled={checkedEmployees.length === 0}>Удалить</button>
       </div>
       <InfiniteScroll
         dataLength={company.employees.length}
         hasMore={false}
         next={() => {}}
         loader={<Preloader />}
-        height={800}
+        height={870}
       >
         <TableHeader employees={company.employees} isAllChecked={isAllChecked} secondColumnText="Фамилия" thirdColumnText="Имя" fourthColumnText="Должность" />
         {employees}
