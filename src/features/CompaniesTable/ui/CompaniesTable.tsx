@@ -26,7 +26,7 @@ export function CompaniesTable({ companies, handleNext, isLoading }: ICompaniesT
   const { isAllChecked } = useAppSelector((state) => state.checkedCompanies);
 
   function handleOpenModal() {
-    dispatch(setIsCompanyPopupOpen());
+    dispatch(setIsCompanyPopupOpen({values: {company: '', address: '', id: 0, employees: []}, isEdit: false}));
   }
 
   // Forced multiple server requests because json-server does not support multiple delete
@@ -63,7 +63,7 @@ export function CompaniesTable({ companies, handleNext, isLoading }: ICompaniesT
             // json-server do not support pagination great, i cant take a limit of data from response
             hasMore={companies.length < 100}
             next={handleNext}
-            loader={<div className="self-center w-12"><Preloader /></div>}
+            loader={<></>}
             height={870}
             className="flex flex-col"
           >

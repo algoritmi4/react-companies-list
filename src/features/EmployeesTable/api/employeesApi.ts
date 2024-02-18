@@ -31,8 +31,16 @@ const employeesApi = baseApi.injectEndpoints({
         body: company
       }),
       invalidatesTags: ['Companies']
+    }),
+    updateEmployee: builder.mutation<ICompany, IAddEmployeeRequest>({
+      query: (company) => ({
+        url: `/companies/${company.id}`,
+        method: 'PATCH',
+        body: company
+      }),
+      invalidatesTags: ['Companies']
     })
   })
 })
 
-export const { useDeleteEmployeesMutation, useAddEmployeeMutation } = employeesApi;
+export const { useDeleteEmployeesMutation, useAddEmployeeMutation, useUpdateEmployeeMutation } = employeesApi;

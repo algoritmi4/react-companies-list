@@ -17,15 +17,15 @@ interface IEmployeesTable {
 }
 
 export function EmployeesTable({ company }: IEmployeesTable): ReactElement {
-  const employees = company.employees.map((employee, index) => <EmployeesTableRow key={index} employee={employee} />).reverse();
+  const employees = company.employees.map((employee, index) => <EmployeesTableRow key={index} handleOpenEditPopup={handleOpenEditPopup} employee={employee} />).reverse();
   const { checkedEmployees } = useAppSelector((state) => state.checkedEployees);
   const { isOpen } = useAppSelector((state) => state.addEmployeePopup);
   const dispatch = useAppDispatch();
   const [ deleteEmployees ] = useDeleteEmployeesMutation();
   const { isAllChecked } = useAppSelector((state) => state.checkedEployees);
 
-  function handleOpenModal() {
-    dispatch(setIsEmployeePopupOpen());
+  function handleOpenAddPopup() {
+    dispatch(setIsEmployeePopupOpen({values: {id: 0, last_name: '', name: '', position: ''}, isEdit: false, companyId: company.id}));
   }
 
   function handleDeleteEmployees() {
@@ -48,13 +48,17 @@ export function EmployeesTable({ company }: IEmployeesTable): ReactElement {
     .catch((err) => console.log(err))
   }
 
+  function handleOpenEditPopup(employee: IEmployees) {
+    dispatch(setIsEmployeePopupOpen({values: employee, isEdit: true, companyId: company.id}));
+  }
+
   return (
     <div className="w-2/5 border-solid border-1 flex flex-col p-3">
       {
         isOpen && <AddEmployeePopup company={company} />
       }
       <div className="flex self-end mr-4">
-        <button onClick={handleOpenModal} type="button" className="px-3 py-1 bg-green-500 rounded-[10px] border-black border-2 border-solid">Добавить</button>
+        <button onClick={handleOpenAddPopup} type="button" className="px-3 py-1 bg-green-500 rounded-[10px] border-black border-2 border-solid">Добавить</button>
         <button onClick={handleDeleteEmployees} type="button" className={`px-3 py-1 rounded-[10px] ml-2 ${checkedEmployees.length === 0 ? "bg-gray-500" : "bg-red-500"}`} disabled={checkedEmployees.length === 0}>Удалить</button>
       </div>
       <InfiniteScroll

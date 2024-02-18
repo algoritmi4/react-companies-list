@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ICompany } from '../model/types';
 
+const baseUrl = import.meta.env.PROD ? 'https://certain-hushed-fog.glitch.me': 'http://localhost:3000';
+
 export const baseApi = createApi({
   reducerPath: 'companiesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://certain-hushed-fog.glitch.me' }),
+  baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Companies'],
   endpoints: (builder) => ({
     getCompanies: builder.query<ICompany[], number>({

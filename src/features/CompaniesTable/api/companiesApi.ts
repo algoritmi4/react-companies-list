@@ -4,6 +4,7 @@ import { ICompany } from "@/shared/model/types";
 interface IAddCompanyRequest {
   company: string;
   address: string;
+  id?: number;
 }
 
 const companiesApi = baseApi.injectEndpoints({
@@ -26,8 +27,19 @@ const companiesApi = baseApi.injectEndpoints({
         },
       }),
       invalidatesTags: ['Companies']
+    }),
+    updateCompany: builder.mutation<ICompany, IAddCompanyRequest>({
+      query: ({id, company, address}) => ({
+        url: `/companies/${id}`,
+        method: 'PATCH',
+        body: {
+          company,
+          address
+        }
+      }),
+      invalidatesTags: ['Companies']
     })
   })
 })
 
-export const { useDeleteCompanyMutation, useAddCompanyMutation } = companiesApi;
+export const { useDeleteCompanyMutation, useAddCompanyMutation, useUpdateCompanyMutation } = companiesApi;
